@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Calculator</title>
+    <style>
+      body{
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.input{
+  padding: 10px 15px;
+  font-size: 20px;
+}
+
+.input:focus{
+  outline: none;
+}
+.calculate{
+  padding: 10px 15px;
+  font-size: 20px;
+  background-color: green;
+  border: 1px solid;
+  border-radius: 10px;
+}
+    </style>
+  </head>
+  <body>
+    <div>
+      <h1>Find Modulo</h1>
+      <label for="numerator">Numerator&nbsp;&nbsp;&nbsp;</label>
+      <input id="numerator" class="numerator input" type="number">
+      <h1>%</h1>
+      <label for="denominator">Denominator</label>
+      <input id="denominator" class="denominator input" type="number">
+      <button class="calculate">Calculate</button>
+      <br><br>
+      <label>Result:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+      <input class="input" id="result" readonly value="">
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded",function(){
+        const calculate = document.querySelector('.calculate');
+        const inpNumerator = document.getElementById('numerator');
+        const inpDenominator = document.getElementById('denominator');
+        inpNumerator.addEventListener('input', function(e){
+          const numerator = Number(e.target.value);
+          const denominator = Number(document.getElementById('denominator').value);
+          math(numerator,denominator);
+        });
+        inpDenominator.addEventListener('input',function(e){
+          const numerator = Number(document.getElementById('numerator').value);
+          const denominator = Number(e.target.value);
+          math(numerator,denominator);
+        });
+        calculate.addEventListener('click', function(){
+          const numerator = Number(document.getElementById('numerator').value);
+          const denominator = Number(document.getElementById('denominator').value);
+          math(numerator,denominator);
+        });
+      });
+
+      function math(numerator,denominator){
+        if(denominator===0){
+          alert("ERROR: Division by zero");
+          return;
+        }
+        let division = Math.floor(numerator/denominator);
+        let multiple = division*denominator;
+        let modulo = numerator - multiple;
+        document.getElementById('result').value = modulo;
+      }
+    </script>
+  </body>
+</html>
