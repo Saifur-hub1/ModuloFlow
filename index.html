@@ -3,46 +3,46 @@
   <head>
     <title>Calculator</title>
     <style>
+      
       body{
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
-.input{
-  padding: 10px 15px;
-  font-size: 20px;
-}
+    .container{
+      text-align: center;
+      width: 60%;
+      max-width: 400px;
+    }
 
-.input:focus{
-  outline: none;
-}
-.calculate{
-  padding: 10px 15px;
-  font-size: 20px;
-  background-color: green;
-  border: 1px solid;
-  border-radius: 10px;
-}
+    .input{
+      padding: 10px 15px;
+      font-size: 20px;
+      border: 2px solid;
+      border-radius: 15px;
+    }
+
+    .input:focus{
+      outline: none;
+    }
     </style>
   </head>
   <body>
-    <div>
+    <div class="container">
       <h1>Find Modulo</h1>
-      <label for="numerator">Numerator&nbsp;&nbsp;&nbsp;</label>
+      <label for="numerator">Numerator:&nbsp;&nbsp;&nbsp;</label>
       <input id="numerator" class="numerator input" type="number">
       <h1>%</h1>
-      <label for="denominator">Denominator</label>
+      <label for="denominator">Denominator:</label>
       <input id="denominator" class="denominator input" type="number">
-      <button class="calculate">Calculate</button>
       <br><br>
       <label>Result:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
       <input class="input" id="result" readonly value="">
     </div>
     <script>
         document.addEventListener("DOMContentLoaded",function(){
-        const calculate = document.querySelector('.calculate');
         const inpNumerator = document.getElementById('numerator');
         const inpDenominator = document.getElementById('denominator');
         inpNumerator.addEventListener('input', function(e){
@@ -53,11 +53,6 @@
         inpDenominator.addEventListener('input',function(e){
           const numerator = Number(document.getElementById('numerator').value);
           const denominator = Number(e.target.value);
-          math(numerator,denominator);
-        });
-        calculate.addEventListener('click', function(){
-          const numerator = Number(document.getElementById('numerator').value);
-          const denominator = Number(document.getElementById('denominator').value);
           math(numerator,denominator);
         });
       });
