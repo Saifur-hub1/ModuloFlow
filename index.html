@@ -63,8 +63,12 @@
       });
 
       function math(numerator,denominator){
+        if(numerator===0 && denominator===0){
+          document.getElementById('result').value = `Indeterminate`;
+          return;
+        }
         if(denominator===0){
-          alert("ERROR: Division by zero");
+          document.getElementById('result').value = `Undefined`;
           return;
         }
         let division = Math.floor(numerator/denominator);
